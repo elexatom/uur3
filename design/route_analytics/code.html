@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">tailwind.config = {darkMode: "class", theme: {extend: {colors: {surface: "#000e23", "on-tertiary-container": "#2e0075", "primary-fixed-dim": "#009af0", "outline-variant": "#31496b", "inverse-on-surface": "#3e5679", "tertiary-container": "#b091ff", "surface-container": "#001a37", "surface-tint": "#5db4ff", "on-tertiary-fixed-variant": "#43208c", "error-container": "#9f0519", "secondary-fixed-dim": "#a1c6ff", "surface-container-low": "#00132c", "on-tertiary-fixed": "#1e0053", "on-secondary-fixed-variant": "#005197", "secondary-fixed": "#b9d3ff", "tertiary-fixed-dim": "#b091ff", "secondary-container": "#005faf", "on-background": "#d9e6ff", "tertiary-fixed": "#bca2ff", "on-secondary": "#002347", tertiary: "#bca2ff", "inverse-primary": "#00639d", "on-surface": "#d9e6ff", "on-primary": "#003151", "surface-container-highest": "#00264c", "inverse-surface": "#f9f9ff", "primary-fixed": "#28a7ff", "on-surface-variant": "#94acd3", "on-tertiary": "#3a1483", "surface-container-lowest": "#000000", error: "#ff716c", "surface-dim": "#000e23", "surface-container-high": "#002041", "on-error": "#490006", background: "#000e23", secondary: "#5ba2fe", "primary-container": "#28a7ff", "on-primary-fixed": "#000000", "surface-variant": "#00264c", "on-secondary-fixed": "#003565", "surface-bright": "#002c57", primary: "#5db4ff", outline: "#5f779b", "on-secondary-container": "#f6f7ff", "on-primary-container": "#00253f", "on-primary-fixed-variant": "#002e4d", "on-error-container": "#ffa8a3", "error-dim": "#d7383b", "secondary-dim": "#58a0fb", "tertiary-dim": "#aa8cf9", "primary-dim": "#10a4ff"}, borderRadius: {DEFAULT: "0.125rem", lg: "0.25rem", xl: "0.5rem", full: "0.75rem"}, fontFamily: {headline: ["Inter"], body: ["Inter"], label: ["Inter"], display: "Inter"}}}};</script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .glass-panel {
+            background: rgba(51, 53, 56, 0.6);
+            backdrop-filter: blur(20px);
+        }
+        .signal-gradient {
+            background: linear-gradient(to right, #ffb77d, #fb8a00);
+        }
+    </style>
+</head>
+<body class="bg-surface text-on-surface font-body selection:bg-primary/30">
+<!-- SideNavBar -->
+<aside class="fixed left-0 top-0 h-full w-64 bg-[#1a1c1f] dark:bg-slate-900 z-40 flex flex-col">
+<div class="p-6">
+<h1 class="text-xl font-bold tracking-tighter text-[#e2e2e6]">Pilsen Pulse</h1>
+<p class="text-xs font-['Inter'] tracking-tight text-[#909094]">Transit Command</p>
+</div>
+<nav class="flex-1 mt-4">
+<a class="flex items-center gap-3 px-4 py-3 text-[#909094] hover:bg-[#282a2d] hover:text-[#e2e2e6] transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="map">map</span>
+<span class="font-['Inter'] text-sm tracking-tight">Network Map</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-[#a4c9ff] border-l-2 border-[#a4c9ff] bg-[#282a2d]" href="#">
+<span class="material-symbols-outlined" data-icon="analytics">analytics</span>
+<span class="font-['Inter'] text-sm tracking-tight">Route Analytics</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-[#909094] hover:bg-[#282a2d] hover:text-[#e2e2e6] transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="science">science</span>
+<span class="font-['Inter'] text-sm tracking-tight">Simulation</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-[#909094] hover:bg-[#282a2d] hover:text-[#e2e2e6] transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="directions_bus">directions_bus</span>
+<span class="font-['Inter'] text-sm tracking-tight">Fleet Status</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-[#909094] hover:bg-[#282a2d] hover:text-[#e2e2e6] transition-colors mt-auto" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span class="font-['Inter'] text-sm tracking-tight">Settings</span>
+</a>
+</nav>
+<div class="p-4 mb-4">
+<button class="w-full py-3 px-4 rounded-xl signal-gradient text-on-tertiary-fixed font-bold text-sm flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-sm" data-icon="warning">warning</span>
+                Report Disruption
+            </button>
+</div>
+</aside>
+<!-- TopAppBar -->
+<header class="fixed top-0 right-0 left-64 h-16 bg-[#111316]/80 backdrop-blur-xl flex justify-between items-center px-6 z-50">
+<div class="flex items-center gap-4">
+<span class="text-lg font-black uppercase text-[#e2e2e6] tracking-tight">The Kinetic Pulse</span>
+</div>
+<div class="flex items-center gap-6">
+<div class="relative flex items-center bg-surface-container-high rounded-full px-4 py-1.5 w-64">
+<span class="material-symbols-outlined text-on-surface-variant text-sm" data-icon="search">search</span>
+<input class="bg-transparent border-none text-xs focus:ring-0 text-on-surface w-full ml-2" placeholder="Search routes..." type="text"/>
+</div>
+<div class="flex items-center gap-4 text-[#909094]">
+<span class="material-symbols-outlined cursor-pointer hover:text-[#a4c9ff]" data-icon="sensors">sensors</span>
+<span class="material-symbols-outlined cursor-pointer hover:text-[#a4c9ff]" data-icon="notifications">notifications</span>
+<span class="material-symbols-outlined cursor-pointer hover:text-[#a4c9ff]" data-icon="help">help</span>
+<div class="w-8 h-8 rounded-full overflow-hidden border border-outline-variant/30">
+<img class="w-full h-full object-cover" data-alt="professional portrait of a senior transit administrator in a high-tech office environment" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAv-uFdFG4Pro65615b_wDEpqM8Y9sD10OX_SYQhFMwYmmhJewXHJ2aMC3T4L-NWl8MbPqX0kd5JXDstDvk-Yjw_TEYrIwAnyCe6JaP_uQbCP3egDdvU4Wia69XfjgxfBtz7psn8z9hX_MRE8GS_8sqDfXsVNiRZJT_8gLFXYU3t2JIDgDZSR_DppeURgC-as8r9lw6IzVNu_70sitwrgWUlyxfTX1rcgIdnuqG8j97jIv-_hfhakcYycIwWqoGtrLTnfBN40fD-eg"/>
+</div>
+</div>
+</div>
+</header>
+<!-- Main Content -->
+<main class="pl-64 pt-16 min-h-screen bg-surface">
+<div class="p-8">
+<!-- Header Section with Asymmetric Balance -->
+<div class="flex justify-between items-end mb-10">
+<div class="max-w-2xl">
+<span class="uppercase text-label text-on-tertiary-fixed-variant tracking-[0.2em] font-bold text-[10px] mb-2 block">System Performance Matrix</span>
+<h2 class="text-4xl font-extrabold tracking-tighter text-on-surface">Route Analytics</h2>
+<p class="text-on-surface-variant mt-2 max-w-md body-md">Live stream analysis of passenger load and route efficiency across Pilsen's primary transit corridors.</p>
+</div>
+<div class="flex flex-col items-end">
+<div class="flex items-center gap-2 mb-2 text-tertiary">
+<span class="relative flex h-2 w-2">
+<span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-tertiary opacity-75"></span>
+<span class="relative inline-flex rounded-full h-2 w-2 bg-tertiary"></span>
+</span>
+<span class="text-[10px] uppercase font-bold tracking-widest">Live Updates Active</span>
+</div>
+<div class="bg-surface-container-low px-4 py-2 rounded-xl flex items-center gap-4">
+<div class="text-right">
+<p class="text-[10px] uppercase text-on-surface-variant font-bold">Total Volume</p>
+<p class="text-xl font-black text-primary">42,891 <span class="text-xs font-medium text-on-surface-variant">/hr</span></p>
+</div>
+</div>
+</div>
+</div>
+<!-- Bento Grid Layout -->
+<div class="grid grid-cols-12 gap-6">
+<!-- Main Passenger Volume Chart -->
+<div class="col-span-12 lg:col-span-8 bg-surface-container-low rounded-xl p-6 relative overflow-hidden">
+<div class="flex justify-between items-start mb-8 relative z-10">
+<div>
+<h3 class="text-lg font-bold tracking-tight">Passenger Volume Trends</h3>
+<p class="text-xs text-on-surface-variant">Comparative flow between Bus and Tram lines</p>
+</div>
+<div class="flex gap-2">
+<button class="bg-surface-container-high px-3 py-1 rounded text-[10px] font-bold text-primary">TRAMS</button>
+<button class="bg-surface-container-high px-3 py-1 rounded text-[10px] font-bold text-on-surface-variant">BUSES</button>
+</div>
+</div>
+<div class="h-64 flex items-end gap-2 px-4 relative z-10">
+<!-- Simulated Chart Bars -->
+<div class="w-full bg-primary/10 rounded-t h-[40%] relative group">
+<div class="absolute bottom-0 w-full bg-primary h-[60%] rounded-t transition-all group-hover:bg-primary-fixed"></div>
+</div>
+<div class="w-full bg-primary/10 rounded-t h-[55%] relative group">
+<div class="absolute bottom-0 w-full bg-primary h-[80%] rounded-t transition-all group-hover:bg-primary-fixed"></div>
+</div>
+<div class="w-full bg-primary/10 rounded-t h-[75%] relative group">
+<div class="absolute bottom-0 w-full bg-primary h-[90%] rounded-t transition-all group-hover:bg-primary-fixed"></div>
+</div>
+<div class="w-full bg-primary/10 rounded-t h-[95%] relative group">
+<div class="absolute bottom-0 w-full bg-primary h-[95%] rounded-t transition-all group-hover:bg-primary-fixed"></div>
+</div>
+<div class="w-full bg-primary/10 rounded-t h-[80%] relative group">
+<div class="absolute bottom-0 w-full bg-primary h-[70%] rounded-t transition-all group-hover:bg-primary-fixed"></div>
+</div>
+<div class="w-full bg-primary/10 rounded-t h-[60%] relative group">
+<div class="absolute bottom-0 w-full bg-primary h-[40%] rounded-t transition-all group-hover:bg-primary-fixed"></div>
+</div>
+<div class="w-full bg-primary/10 rounded-t h-[45%] relative group">
+<div class="absolute bottom-0 w-full bg-primary h-[30%] rounded-t transition-all group-hover:bg-primary-fixed"></div>
+</div>
+</div>
+<div class="flex justify-between mt-4 px-4 text-[10px] font-bold text-on-surface-variant tracking-widest">
+<span>06:00</span>
+<span>09:00 (PEAK)</span>
+<span>12:00</span>
+<span>15:00</span>
+<span>18:00</span>
+<span>21:00</span>
+</div>
+</div>
+<!-- Peak Performance Card -->
+<div class="col-span-12 lg:col-span-4 bg-surface-container rounded-xl p-6 flex flex-col justify-between">
+<div>
+<h3 class="text-lg font-bold tracking-tight mb-1">Peak Efficiency</h3>
+<p class="text-xs text-on-surface-variant mb-6">Current line saturation metrics</p>
+<div class="space-y-6">
+<div>
+<div class="flex justify-between text-xs font-bold mb-2">
+<span>Trolleybus Line 12</span>
+<span class="text-tertiary">94% Capacity</span>
+</div>
+<div class="w-full h-1.5 bg-surface-container-high rounded-full overflow-hidden">
+<div class="h-full bg-tertiary w-[94%]"></div>
+</div>
+</div>
+<div>
+<div class="flex justify-between text-xs font-bold mb-2">
+<span>Tram Line 4</span>
+<span class="text-primary">78% Capacity</span>
+</div>
+<div class="w-full h-1.5 bg-surface-container-high rounded-full overflow-hidden">
+<div class="h-full bg-primary w-[78%]"></div>
+</div>
+</div>
+<div>
+<div class="flex justify-between text-xs font-bold mb-2">
+<span>Bus Line 30</span>
+<span class="text-primary">62% Capacity</span>
+</div>
+<div class="w-full h-1.5 bg-surface-container-high rounded-full overflow-hidden">
+<div class="h-full bg-primary w-[62%]"></div>
+</div>
+</div>
+</div>
+</div>
+<button class="mt-8 text-[10px] font-black uppercase tracking-widest text-primary flex items-center gap-2 group">
+                        View Expansion Plan
+                        <span class="material-symbols-outlined text-sm transition-transform group-hover:translate-x-1" data-icon="arrow_forward">arrow_forward</span>
+</button>
+</div>
+<!-- Data Grid - Recessed Tier -->
+<div class="col-span-12 bg-surface-container-lowest rounded-xl p-0 overflow-hidden shadow-2xl">
+<div class="px-6 py-4 bg-surface-container-low flex justify-between items-center">
+<h4 class="text-sm font-bold uppercase tracking-widest text-on-surface-variant">Live Route Diagnostics</h4>
+<div class="flex gap-4">
+<span class="material-symbols-outlined text-on-surface-variant cursor-pointer text-sm" data-icon="filter_list">filter_list</span>
+<span class="material-symbols-outlined text-on-surface-variant cursor-pointer text-sm" data-icon="download">download</span>
+</div>
+</div>
+<table class="w-full text-left">
+<thead class="border-b border-outline-variant/15 text-[10px] uppercase font-black text-on-surface-variant/60">
+<tr>
+<th class="px-6 py-4">Route ID</th>
+<th class="px-6 py-4">Mode</th>
+<th class="px-6 py-4">Status</th>
+<th class="px-6 py-4">Avg Load</th>
+<th class="px-6 py-4">Latency</th>
+<th class="px-6 py-4 text-right">Action</th>
+</tr>
+</thead>
+<tbody class="text-sm divide-y divide-outline-variant/10">
+<tr class="hover:bg-surface-container-highest transition-colors group">
+<td class="px-6 py-4 font-bold">L-410 (Bory)</td>
+<td class="px-6 py-4 text-on-surface-variant">Tram</td>
+<td class="px-6 py-4">
+<span class="bg-primary/20 text-primary text-[10px] font-bold px-2 py-0.5 rounded-full">Optimal</span>
+</td>
+<td class="px-6 py-4">84%</td>
+<td class="px-6 py-4 text-on-surface-variant">+0:45s</td>
+<td class="px-6 py-4 text-right">
+<span class="material-symbols-outlined text-on-surface-variant hover:text-primary cursor-pointer text-lg" data-icon="more_vert">more_vert</span>
+</td>
+</tr>
+<tr class="bg-surface-container-low hover:bg-surface-container-highest transition-colors">
+<td class="px-6 py-4 font-bold border-l-2 border-tertiary">L-201 (Skvrňany)</td>
+<td class="px-6 py-4 text-on-surface-variant">Trolleybus</td>
+<td class="px-6 py-4">
+<span class="bg-tertiary/20 text-tertiary text-[10px] font-bold px-2 py-0.5 rounded-full">Delayed</span>
+</td>
+<td class="px-6 py-4">112%</td>
+<td class="px-6 py-4 text-tertiary">+12:15m</td>
+<td class="px-6 py-4 text-right">
+<span class="material-symbols-outlined text-on-surface-variant hover:text-primary cursor-pointer text-lg" data-icon="more_vert">more_vert</span>
+</td>
+</tr>
+<tr class="hover:bg-surface-container-highest transition-colors">
+<td class="px-6 py-4 font-bold">L-012 (Centrum)</td>
+<td class="px-6 py-4 text-on-surface-variant">Bus</td>
+<td class="px-6 py-4">
+<span class="bg-primary/20 text-primary text-[10px] font-bold px-2 py-0.5 rounded-full">Optimal</span>
+</td>
+<td class="px-6 py-4">42%</td>
+<td class="px-6 py-4 text-on-surface-variant">-1:20s</td>
+<td class="px-6 py-4 text-right">
+<span class="material-symbols-outlined text-on-surface-variant hover:text-primary cursor-pointer text-lg" data-icon="more_vert">more_vert</span>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Secondary Insight Cards -->
+<div class="col-span-12 md:col-span-4 bg-surface-container-low rounded-xl p-6">
+<div class="flex items-center gap-4 mb-4">
+<div class="w-10 h-10 bg-primary/10 rounded-lg flex items-center justify-center text-primary">
+<span class="material-symbols-outlined" data-icon="eco">eco</span>
+</div>
+<div>
+<p class="text-[10px] uppercase font-bold text-on-surface-variant">Emission Reduction</p>
+<h5 class="text-xl font-black">12.4 Tons</h5>
+</div>
+</div>
+<p class="text-xs text-on-surface-variant leading-relaxed">System-wide shift to electric trolleybuses has reduced carbon output by 4% this quarter.</p>
+</div>
+<div class="col-span-12 md:col-span-4 bg-surface-container-low rounded-xl p-6">
+<div class="flex items-center gap-4 mb-4">
+<div class="w-10 h-10 bg-tertiary/10 rounded-lg flex items-center justify-center text-tertiary">
+<span class="material-symbols-outlined" data-icon="bolt">bolt</span>
+</div>
+<div>
+<p class="text-[10px] uppercase font-bold text-on-surface-variant">Energy Consumption</p>
+<h5 class="text-xl font-black">842 MWh</h5>
+</div>
+</div>
+<p class="text-xs text-on-surface-variant leading-relaxed">Peak demand reached at 08:45 AM. Smart grid management diverted 15% load to reserves.</p>
+</div>
+<div class="col-span-12 md:col-span-4 bg-surface-container-low rounded-xl p-6">
+<div class="flex items-center gap-4 mb-4">
+<div class="w-10 h-10 bg-primary-fixed-dim/10 rounded-lg flex items-center justify-center text-primary-fixed-dim">
+<span class="material-symbols-outlined" data-icon="group">group</span>
+</div>
+<div>
+<p class="text-[10px] uppercase font-bold text-on-surface-variant">Citizen Satisfaction</p>
+<h5 class="text-xl font-black">4.8 / 5.0</h5>
+</div>
+</div>
+<p class="text-xs text-on-surface-variant leading-relaxed">Based on 12,400 app check-ins. Reliability rating is at an all-time historical high.</p>
+</div>
+</div>
+</div>
+</main>
+<!-- Floating Map Preview Section (Glassmorphism) -->
+<div class="fixed bottom-8 right-8 w-80 glass-panel rounded-2xl p-4 shadow-[0px_24px_48px_rgba(0,0,0,0.4)] border border-outline-variant/10 z-30">
+<div class="flex justify-between items-center mb-3">
+<h6 class="text-xs font-black uppercase tracking-widest">Network Focus</h6>
+<span class="material-symbols-outlined text-sm cursor-pointer" data-icon="open_in_full">open_in_full</span>
+</div>
+<div class="h-32 w-full rounded-xl bg-surface-container-highest overflow-hidden mb-3">
+<img class="w-full h-full object-cover opacity-60" data-alt="abstract architectural map of a modern city with illuminated blue lines representing transit routes" src="https://lh3.googleusercontent.com/aida-public/AB6AXuANsQS1wccZigsHCqBSOCPY3heDLprPynFk8zygyQt2s9s3_35oqAHCbMuBR-xhODlLZoGjBVK2nW5cfYsESLnFL3NKtXBS4np0YgzXnXgJXGqVv0aj4RkiicNa-e9FPbUy8rDI9iYxCDoDZRS28kTihQ5lZOW3Yciojzbgi6HZf7W0iZBrAXYgZCvxLMcZvki_wHAcypMnPbdkP1uwV9-5FwSJcXDJb05iAxGcPKNAMmzNdKn_Z-xxfwzn3gEjYhMZXRXkyZYvkfQ"/>
+</div>
+<div class="flex items-center justify-between text-[10px] font-bold">
+<span class="flex items-center gap-1 text-primary">
+<span class="w-1.5 h-1.5 rounded-full bg-primary"></span> 18 Active Trams
+            </span>
+<span class="flex items-center gap-1 text-tertiary">
+<span class="w-1.5 h-1.5 rounded-full bg-tertiary"></span> 4 Alerts
+            </span>
+</div>
+</div>
+</body></html>

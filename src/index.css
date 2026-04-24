@@ -1,0 +1,135 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --color-primary: #5db4ff;
+    --color-secondary: #5ba2fe;
+    --color-tertiary: #bca2ff;
+    --color-surface: #000e23;
+    --color-surface-container: #001a37;
+    --color-surface-container-low: #00132c;
+    --color-surface-container-high: #002041;
+    --color-surface-container-highest: #00264c;
+    --color-surface-container-lowest: #000000;
+    --color-surface-dim: #000e23;
+    --color-surface-bright: #002c57;
+    --color-surface-variant: #00264c;
+    --color-background: #000e23;
+    --color-on-surface: #d9e6ff;
+    --color-on-surface-variant: #94acd3;
+    --color-on-background: #d9e6ff;
+    --color-on-primary: #003151;
+    --color-on-secondary: #002347;
+    --color-on-tertiary: #3a1483;
+    --color-outline: #5f779b;
+    --color-outline-variant: #31496b;
+    --color-error: #ff716c;
+    --color-error-container: #9f0519;
+    --color-on-error: #490006;
+    --color-on-error-container: #ffa8a3;
+    --color-primary-fixed: #28a7ff;
+    --color-primary-fixed-dim: #009af0;
+    --color-primary-dim: #10a4ff;
+    --color-primary-container: #28a7ff;
+    --color-on-primary-fixed: #000000;
+    --color-on-primary-container: #00253f;
+    --color-on-primary-fixed-variant: #002e4d;
+    --color-secondary-fixed: #b9d3ff;
+    --color-secondary-fixed-dim: #a1c6ff;
+    --color-secondary-dim: #58a0fb;
+    --color-secondary-container: #005faf;
+    --color-on-secondary-fixed: #003565;
+    --color-on-secondary-fixed-variant: #005197;
+    --color-on-secondary-container: #f6f7ff;
+    --color-tertiary-fixed: #bca2ff;
+    --color-tertiary-fixed-dim: #b091ff;
+    --color-tertiary-dim: #aa8cf9;
+    --color-tertiary-container: #b091ff;
+    --color-on-tertiary-fixed: #1e0053;
+    --color-on-tertiary-fixed-variant: #43208c;
+    --color-on-tertiary-container: #2e0075;
+    --color-inverse-surface: #f9f9ff;
+    --color-inverse-on-surface: #3e5679;
+    --color-inverse-primary: #00639d;
+    --color-surface-tint: #5db4ff;
+    --sidebar-bg: #1a1c1f;
+    --header-bg: rgba(17,19,22,0.8);
+  }
+
+  .light-mode {
+    --color-surface: #f0f4ff;
+    --color-surface-container: #e0e8f8;
+    --color-surface-container-low: #e8effc;
+    --color-surface-container-high: #d0dcf4;
+    --color-surface-container-highest: #c0ccec;
+    --color-surface-container-lowest: #ffffff;
+    --color-background: #f0f4ff;
+    --color-on-surface: #0a1a30;
+    --color-on-surface-variant: #2a4060;
+    --color-on-background: #0a1a30;
+    --color-outline: #4a6080;
+    --color-outline-variant: #8aaad0;
+    --sidebar-bg: #1e2330;
+    --header-bg: rgba(20,25,40,0.85);
+  }
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background-color: var(--color-background);
+  color: var(--color-on-surface);
+  margin: 0;
+  overflow: hidden;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--color-surface-container-lowest); }
+::-webkit-scrollbar-thumb { background: var(--color-outline-variant); border-radius: 10px; }
+
+/* Leaflet map container fix */
+.leaflet-container {
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+/* Material UI dark theme overrides */
+.MuiTreeItem-content:hover {
+  background-color: rgba(93,180,255,0.08) !important;
+}
+.MuiTreeItem-content.Mui-selected {
+  background-color: rgba(93,180,255,0.16) !important;
+}
+.MuiDataGrid-root {
+  border: none !important;
+}
+.MuiDataGrid-row:hover {
+  background-color: rgba(93,180,255,0.06) !important;
+}
+
+/* Animations */
+@keyframes ping {
+  75%, 100% { transform: scale(2); opacity: 0; }
+}
+.animate-ping {
+  animation: ping 1.4s cubic-bezier(0, 0, 0.2, 1) infinite;
+}
+@keyframes pulse-soft {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+.animate-pulse {
+  animation: pulse-soft 2s cubic-bezier(0.4,0,0.6,1) infinite;
+}
+
+/* Nav active highlight */
+.nav-active {
+  color: #a4c9ff !important;
+  border-left: 2px solid #a4c9ff;
+  background-color: #282a2d;
+}

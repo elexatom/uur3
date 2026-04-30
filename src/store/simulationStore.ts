@@ -1,30 +1,21 @@
-import { create } from 'zustand';
+/*
+Finalni revize - 100%
+ */
 
-export type WeatherType = 'Clear' | 'Rain' | 'Snow' | 'Storm' | 'Fog' | 'Heatwave';
-export type SeverityType = 'Low' | 'Medium' | 'High' | 'Critical';
-
-export interface SimDisruption {
-  id: string;
-  lat: number;
-  lng: number;
-  label: string;
-  severity: SeverityType;
-  radius: number;
-}
+import {create} from 'zustand'
+import {Weather} from "../types/design"
+import type {SimDisruption} from "../types/simulation"
 
 interface SimulationState {
-  // Global Toggle
   isActive: boolean;
   setIsActive: (v: boolean) => void;
 
-  // Configuration
-  weather: WeatherType;
-  passengerLoad: number; // 0-200%
-  
-  setWeather: (w: WeatherType) => void;
+  weather: string;
+  passengerLoad: number;
+
+  setWeather: (w: string) => void;
   setPassengerLoad: (l: number) => void;
 
-  // Real-time Metrics
   metrics: {
     congestion: number;
     efficiency: number;
@@ -33,14 +24,12 @@ interface SimulationState {
   };
   setMetrics: (m: Partial<SimulationState['metrics']>) => void;
 
-  // Event Injections
   disruptions: SimDisruption[];
-  addDisruption: (d: SimDisruption) => void;
+  addDisruption: (d: Omit<SimDisruption, 'id'>) => void;
   updateDisruption: (id: string, patch: Partial<SimDisruption>) => void;
   removeDisruption: (id: string) => void;
   clearDisruptions: () => void;
 
-  // UI State
   setupStep: number;
   setSetupStep: (s: number) => void;
   isMapInjectionMode: boolean;
@@ -49,13 +38,13 @@ interface SimulationState {
 
 export const useSimulationStore = create<SimulationState>((set) => ({
   isActive: false,
-  setIsActive: (v) => set({ isActive: v }),
+  setIsActive: (v) => set({isActive: v}),
 
-  weather: 'Clear',
+  weather: Weather[0].key,
   passengerLoad: 100,
 
-  setWeather: (w) => set({ weather: w }),
-  setPassengerLoad: (l) => set({ passengerLoad: l }),
+  setWeather: (w) => set({weather: w}),
+  setPassengerLoad: (l) => set({passengerLoad: l}),
 
   metrics: {
     congestion: 40,
@@ -63,18 +52,20 @@ export const useSimulationStore = create<SimulationState>((set) => ({
     delay: 0,
     activeFleet: 400,
   },
-  setMetrics: (m) => set((state) => ({ metrics: { ...state.metrics, ...m } })),
+  setMetrics: (m) => set((state) => ({metrics: {...state.metrics, ...m}})),
 
   disruptions: [],
-  addDisruption: (d) => set((state) => ({ disruptions: [...state.disruptions, d] })),
-  updateDisruption: (id, patch) => set((state) => ({
-    disruptions: state.disruptions.map(d => d.id === id ? { ...d, ...patch } : d)
+  addDisruption: (d) => set((state) => ({
+    disruptions: [...state.disruptions, {...d, id: `sim-d-${crypto.randomUUID()}`}]
   })),
-  removeDisruption: (id) => set((state) => ({ disruptions: state.disruptions.filter(d => d.id !== id) })),
-  clearDisruptions: () => set({ disruptions: [] }),
+  updateDisruption: (id, patch) => set((state) => ({
+    disruptions: state.disruptions.map(d => d.id === id ? {...d, ...patch} : d)
+  })),
+  removeDisruption: (id) => set((state) => ({disruptions: state.disruptions.filter(d => d.id !== id)})),
+  clearDisruptions: () => set({disruptions: []}),
 
   setupStep: 0,
-  setSetupStep: (s) => set({ setupStep: s }),
+  setSetupStep: (s) => set({setupStep: s}),
   isMapInjectionMode: false,
-  setMapInjectionMode: (v) => set({ isMapInjectionMode: v }),
-}));
+  setMapInjectionMode: (v) => set({isMapInjectionMode: v}),
+}))

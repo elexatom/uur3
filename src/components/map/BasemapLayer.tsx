@@ -1,23 +1,20 @@
-import React from "react"
-import { Box, FormControl, MenuItem, Select, Typography } from "@mui/material"
-import { TileLayer } from "react-leaflet"
-import type { SelectChangeEvent } from "@mui/material/Select"
-import { useAppStore } from "../../store/appStore"
+/*
+Finalni revize - 100%
+ */
 
-const getLayerLabel = (url: string, index: number): string => {
-  try {
-    const host = new URL(url.replace("{s}.", "a.")).host
-    return `Layer ${index + 1} (${host})`
-  } catch {
-    return `Layer ${index + 1}`
-  }
-}
+import React from "react"
+import {FormControl, MenuItem, Select} from "@mui/material"
+import {TileLayer} from "react-leaflet"
+import type {SelectChangeEvent} from "@mui/material/Select"
+import {useAppStore} from "../../store/appStore"
+import MapIcon from "@mui/icons-material/Map"
+
 
 export const BasemapTileLayer: React.FC = () => {
-  const settings = useAppStore((s) => s.settings)
+  const {settings} = useAppStore()
+  const activeLayer = settings.basemapLayers.find(l => l.id === settings.activeBasemapId) || settings.basemapLayers[0]
 
-  const activeLayer = settings.basemapLayers.find((layer) => layer.id === settings.activeBasemapId)
-    ?? settings.basemapLayers[0]
+  if (!activeLayer) return null
 
   return (
     <TileLayer
@@ -33,47 +30,37 @@ interface BasemapSelectorProps {
   className?: string;
 }
 
-export const BasemapSelector: React.FC<BasemapSelectorProps> = ({ className }) => {
-  const settings = useAppStore((s) => s.settings)
-  const updateSettings = useAppStore((s) => s.updateSettings)
+export const BasemapSelector: React.FC<BasemapSelectorProps> = ({className}) => {
+  const {settings, updateSettings} = useAppStore()
 
   const handleChange = (event: SelectChangeEvent<string>) => {
-    updateSettings({ activeBasemapId: event.target.value })
+    updateSettings({activeBasemapId: event.target.value})
   }
 
   return (
-    <Box
-      className={className}
-      sx={{
-        minWidth: 220,
-        p: 1.25,
-        borderRadius: 2,
-        backgroundColor: "rgba(255, 255, 255, 0.92)",
-        border: "1px solid rgba(148, 163, 184, 0.3)",
-        boxShadow: "0 10px 30px rgba(15, 23, 42, 0.12)",
-        backdropFilter: "blur(8px)",
-      }}
-    >
-      <Typography
-        variant="caption"
-        sx={{ display: "block", mb: 0.75, fontWeight: 700, color: "text.secondary", letterSpacing: "0.05em" }}
-      >
-        BASEMAP
-      </Typography>
+    <div
+      className={`bg-white/80 backdrop-blur-md rounded-2xl p-4 shadow-lg border border-white/20 min-w-50 ${className || ''}`}>
+      <header className="flex items-center gap-2 mb-3">
+        <MapIcon color='primary' fontSize="small"/>
+        <span className="text-[13px] font-semibold tracking-wide text-black">
+          Mapový podklad
+        </span>
+      </header>
+
       <FormControl fullWidth size="small">
         <Select
           value={settings.activeBasemapId}
           onChange={handleChange}
-          sx={{ backgroundColor: "#fff", fontSize: 12, fontWeight: 600 }}
+          sx={{backgroundColor: "#fff", fontSize: 12, fontWeight: 600}}
         >
-          {settings.basemapLayers.map((layer, index) => (
-            <MenuItem key={layer.id} value={layer.id} sx={{ fontSize: 12 }}>
-              {getLayerLabel(layer.url, index)}
+          {settings.basemapLayers.map((layer) => (
+            <MenuItem key={layer.id} value={layer.id} sx={{fontSize: 12}}
+                      className="font-medium text-slate-700">
+              {layer.name}
             </MenuItem>
           ))}
         </Select>
       </FormControl>
-    </Box>
+    </div>
   )
 }
-

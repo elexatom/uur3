@@ -1,4 +1,6 @@
-// revidovano OK
+/*
+Finalni revize - 100%
+ */
 
 import TramIcon from "@mui/icons-material/Tram"
 import DirectionsBusIcon from "@mui/icons-material/DirectionsBus"
@@ -24,21 +26,12 @@ export const TYPE_COLORS: Record<string, string> = {
   trolley: "#22c55e",
 }
 
-// Konfigurace vrstev a stavů vozidel
 export const LAYER_CFG = [
   {key: "showTrams", label: "Tramvaje", bg: "bg-[#fb8a00]"},
   {key: "showBuses", label: "Autobusy", bg: "bg-[#10a4ff]"},
   {key: "showTrolleys", label: "Trolejbusy", bg: "bg-[#22c55e]"},
   {key: "showStops", label: "Zobrazit zastávky", bg: "bg-purple-500"},
 ] as const
-
-export const DEP_STATUS_CFG: Record<string, { label: string, color: string, bg: string }> = {
-  "on-time": {label: "VČAS", color: "text-green-500", bg: "bg-green-500/15"},
-  "alert": {label: "PORUCHA", color: "text-red-500", bg: "bg-red-500/15"},
-  "delayed": {label: "ZPOŽDĚNÍ", color: "text-orange-500", bg: "bg-orange-500/15"}
-}
-
-export const DEP_T_HEAD = ["ID Jednotky", "Trasa / Cíl", "Aktuální stanice", "Plán", "Aktuální", "Status"]
 
 export const createWaypointIcon = (color: string, index: number): L.DivIcon => {
   return L.divIcon({
@@ -48,3 +41,18 @@ export const createWaypointIcon = (color: string, index: number): L.DivIcon => {
     iconAnchor: [12, 12],
   })
 }
+
+export const SEVERITY_CONFIG = {
+  0: {label: 'Nízká', color: '#22c55e'},
+  1: {label: 'Střední', color: '#eab308'},
+  2: {label: 'Vysoká', color: '#fb8a00'},
+  3: {label: 'Kritická', color: '#ef4444'},
+} as const
+
+export const Weather = [
+  {key: "weather0", label: "Jasno", severity: 0},
+  {key: "weather1", label: "Déšť", severity: 1},
+  {key: "weather2", label: "Sníh", severity: 1.2},
+  {key: "weather3", label: "Mlha", severity: 2.5},
+  {key: "weather4", label: "Bouřka", severity: 1.8},
+] as const

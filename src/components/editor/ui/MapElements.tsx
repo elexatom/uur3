@@ -1,53 +1,69 @@
-// revidovano OK
+/*
+Finalni revize - 100%
+ */
 
-import type { Stop } from "../../../types/transit.ts"
-import { createWaypointIcon, TYPE_COLORS } from "../../../types/design.tsx"
-import { CircleMarker, Marker, Popup } from "react-leaflet"
+import type {Stop} from "../../../types/transit.ts"
+import {createWaypointIcon, TYPE_COLORS} from "../../../types/design.tsx"
+import {CircleMarker, Marker, Popup} from "react-leaflet"
 import L from "leaflet"
-import { Box, Button } from "@mui/material"
+import {Box, Button} from "@mui/material"
+import {useAppStore} from "../../../store/appStore.ts"
 
 interface NetworkStopsProps {
-  stops: Stop[]
   onStopClick: (stop: Stop) => void
   selectedStopId: number | null
+  filter: boolean
 }
 
-export const NetworkStops = ({ stops, onStopClick, selectedStopId }: NetworkStopsProps) => {
-  return stops.map((stop: Stop) => {
+export const NetworkStops = ({onStopClick, selectedStopId, filter}: NetworkStopsProps) => {
+  const {routeConfig, network} = useAppStore()
+
+  return network.stops.map((stop: Stop) => {
     const stopColor = TYPE_COLORS[stop.type] || TYPE_COLORS.bus
 
-    return (
-      <CircleMarker
-        key={stop.id}
-        center={[stop.lat, stop.lng]}
-        radius={stop.id === selectedStopId ? 10 : 6}
-        pathOptions={{ fillColor: stop.id === selectedStopId ? "#9c27b0" : stopColor, fillOpacity: 0.8, color: "#ffffff", weight: 1 }}
-        eventHandlers={{
-          click: (e) => {
-            L.DomEvent.stopPropagation(e.originalEvent)
-            onStopClick(stop)
-          }
-        }}
-      >
-        <Popup><span className="font-mono">{stop.name}</span></Popup>
-      </CircleMarker>
-    )
+    if (routeConfig.type === stop.type ||
+      (routeConfig.type === "bus" && stop.type === "trolley") ||
+      (routeConfig.type === "trolley" && stop.type === "bus") ||
+      !filter
+    ) {
+      return (
+        <CircleMarker
+          key={stop.id}
+          center={[stop.lat, stop.lng]}
+          radius={stop.id === selectedStopId ? 10 : 6}
+          pathOptions={{
+            fillColor: stop.id === selectedStopId ? "#9c27b0" : stopColor,
+            fillOpacity: 0.8,
+            color: "#ffffff",
+            weight: 1
+          }}
+          eventHandlers={{
+            click: (e) => {
+              L.DomEvent.stopPropagation(e.originalEvent)
+              onStopClick(stop)
+            }
+          }}
+        >
+          <Popup><span className="font-mono">{stop.name}</span></Popup>
+        </CircleMarker>
+      )
+    }
   })
 }
 
 interface RouteWaypointsProps {
-  waypoints: Stop[]
   typeColor: string
-  removeWaypoint: (id: number) => void
 }
 
-export const RouteWaypoints = ({ waypoints, typeColor, removeWaypoint }: RouteWaypointsProps) => {
-  return waypoints.map((wp: Stop, i: number) => (
+export const RouteWaypoints = ({typeColor}: RouteWaypointsProps) => {
+  const {routeConfig, removeWaypoint} = useAppStore()
+
+  return routeConfig.waypoints.map((wp: Stop, i: number) => (
     <Marker key={wp.id} position={[wp.lat, wp.lng]} icon={createWaypointIcon(typeColor, i + 1)}>
       <Popup>
         <Box className="p-1 text-center flex flex-col items-left gap-2">
           <span className="font-mono">#{i + 1} {wp.name}</span>
-          <Button size="small" color="error" variant="outlined" style={{ textTransform: "none" as const }}
+          <Button size="small" color="error" variant="outlined" style={{textTransform: "none" as const}}
                   onClick={() => removeWaypoint(wp.id)}
                   className="mt-1 font-bold text-[10px]"
           >

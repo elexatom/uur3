@@ -1,16 +1,15 @@
-// revidovano OK
+/*
+Finalni revize - 100%
+ */
 
-import { Box, Collapse, IconButton, Paper } from "@mui/material"
-import { Close as CloseIcon } from "@mui/icons-material"
-import type { RouteConfig } from "../../../types/transit.ts"
-import { TransitionGroup } from 'react-transition-group';
+import {Box, Collapse, IconButton, Paper} from "@mui/material"
+import {Close as CloseIcon} from "@mui/icons-material"
+import {TransitionGroup} from 'react-transition-group'
+import {TYPE_COLORS} from "../../../types/design.tsx"
+import {useAppStore} from "../../../store/appStore.ts"
 
-interface WaypointListProps {
-  routeConfig: RouteConfig;
-  removeWaypoint: (id: number) => void;
-}
-
-export const WaypointList = ({ routeConfig, removeWaypoint }: WaypointListProps) => {
+export const WaypointList = () => {
+  const {removeWaypoint, routeConfig} = useAppStore()
   return (
     <Box className="space-y-4">
       <span className="text-sm text-slate-500 leading-none">Seznam zastávek ({routeConfig.waypoints.length})</span>
@@ -22,7 +21,7 @@ export const WaypointList = ({ routeConfig, removeWaypoint }: WaypointListProps)
               in
               key={wp.id}
               timeout={220}
-              style={{ transformOrigin: "0 0 0", transitionDelay: `${i * 45}ms` }}
+              style={{transformOrigin: "0 0 0", transitionDelay: `${i * 45}ms`}}
             >
               <Paper
                 elevation={0}
@@ -38,8 +37,8 @@ export const WaypointList = ({ routeConfig, removeWaypoint }: WaypointListProps)
                 }}
               >
                 <Box
-                  className="w-7 h-7 bg-white rounded-lg flex items-center justify-center font-black text-xs text-slate-600 shadow-sm shrink-0"
-                  sx={{ transition: "transform 180ms ease" }}
+                  className={`w-7 h-7 bg-white border rounded-lg flex items-center justify-center font-black text-xs text-slate-600 shadow-sm shrink-0`}
+                  sx={{transition: "transform 180ms ease", borderColor: TYPE_COLORS[wp.type]}}
                 >
                   {String(i + 1)}
                 </Box>
@@ -71,7 +70,7 @@ export const WaypointList = ({ routeConfig, removeWaypoint }: WaypointListProps)
 
         {routeConfig.waypoints.length === 0 && (
           <Box className="py-12 text-center border-2 border-dashed border-slate-100 rounded-2xl">
-            <span className="text-xs text-slate-500">Kliknutím na zastávky na mapě vytvoříte trasu.</span>
+            <span className="text-xs text-slate-500 p-1">Kliknutím na zastávky na mapě vytvoříte trasu.</span>
           </Box>
         )}
       </Box>

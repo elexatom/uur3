@@ -1,4 +1,6 @@
-// revidovano OK
+/*
+Finalni revize - 100%
+ */
 
 import {Box, InputAdornment, TextField} from "@mui/material"
 import React, {type ChangeEventHandler} from "react"

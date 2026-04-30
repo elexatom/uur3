@@ -1,4 +1,6 @@
-// revidovano OK
+/*
+Finalni revize - 100%
+ */
 
 import { Box, Button } from "@mui/material"
 import Grid from "@mui/material/Grid"

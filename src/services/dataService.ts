@@ -1,95 +1,58 @@
-import type {Line, Stop} from "../types/transit.ts"
+/*
+Finalni revize - 100%
+ */
 
-
-export interface Segment {
-  id: string;
-  coords: [number, number][];
-  isTram: boolean;
-  isBus: boolean;
-  isTrol: boolean;
-}
-
-export interface NetworkData {
-  stops: Stop[];
-  segments: Segment[];
-  lines: Line[];
-}
-
-function polygonCentroid(coords: number[][][]): [number, number] {
-  if (!coords || coords.length === 0 || coords[0].length === 0) return [0, 0]
-  const ring = coords[0]
-  let lat = 0, lng = 0
-  for (const [lo, la] of ring) {
-    lat += la
-    lng += lo
-  }
-  return [lat / ring.length, lng / ring.length]
-}
+import type {Line, Segment, Stop} from "../types/transit.ts"
+import type {NetworkData} from "../types/network.ts"
 
 export async function loadNetworkData(): Promise<NetworkData> {
   try {
-    const [stopsJson, segsJson, schedJson] = await Promise.all([
-      fetch('/data/mhdzastavky.geojson').then((r) => r.json()).catch(() => ({features: []})),
-      fetch('/data/mhduseky.geojson').then((r) => r.json()).catch(() => ({features: []})),
-      fetch('/data/schedules.json').then((r) => r.json()).catch(() => ({lines: []})),
+    const [usekyRes, graphRes] = await Promise.all([
+      fetch('/data/mhduseky.geojson'),
+      fetch('/data/transit_graph.json')
     ])
 
-    const stops: Stop[] = []
-    for (const f of stopsJson.features) {
-      if (!f.geometry) continue
+    const usekyData = await usekyRes.json()
+    const graphData = await graphRes.json()
 
-      let lat: number | undefined
-      let lng: number | undefined
-      let c: any = null
-
-      // Handle GeoJSON types
-      if (f.geometry.type === 'GeometryCollection') {
-        const poly = f.geometry.geometries?.find((g: any) => g.type === 'Polygon')
-        const pt = f.geometry.geometries?.find((g: any) => g.type === 'Point')
-
-        if (poly && poly.coordinates) {
-          [lat, lng] = polygonCentroid(poly.coordinates)
-        } else if (pt && pt.coordinates) {
-          c = pt.coordinates
-        }
-      } else if (f.geometry.type === 'Polygon') {
-        [lat, lng] = polygonCentroid(f.geometry.coordinates)
-      } else if (f.geometry.type === 'Point') {
-        c = f.geometry.coordinates
-      }
-
-      if (lat === undefined || lng === undefined) {
-        if (c && c.length >= 2) {
-          lng = Array.isArray(c[0]) ? c[Math.floor(c.length / 2)][0] : c[0]
-          lat = Array.isArray(c[0]) ? c[Math.floor(c.length / 2)][1] : c[1]
-        } else {
-          continue // Skip feature if parsing coordinates completely fails
-        }
-      }
-
-      const p = f.properties || {}
+    const mappedStops: Stop[] = (graphData.stops || []).map((s: any) => {
       let type: 'tram' | 'bus' | 'trolley' = 'bus'
-      if (p.TYP === 'ZT') type = 'tram'
-      else if (p.TYP === 'TR') type = 'trolley'
+      const t = String(s.typ || s.type).toUpperCase()
+      if (t === 'ZT' || t === 'ZTA' || t === 'TRAM') type = 'tram'
+      else if (t === 'ZE' || t === 'TR' || t === 'TROLLEY' || t === 'TROL') type = 'trolley'
 
-      stops.push({id: p.ID_ZAST, name: p.NAZEV || 'Unknown', lat: lat!, lng: lng!, type})
-    }
-    console.log("stops", stops)
+      return {
+        ...s,
+        lng: s.lon || s.lng,
+        type,
+        gpsId: s.id_pmdp || s.gpsId,
+        id: s.id
+      }
+    })
 
-    const segments: Segment[] = []
-    for (const f of segsJson.features) {
-      if (f.geometry?.type !== 'LineString') continue
-      // Reverse [lng, lat] to [lat, lng] for Leaflet paths
-      const coords: [number, number][] = (f.geometry.coordinates || []).map(([lo, la]: number[]) => [la, lo])
+    const mappedSegments: Segment[] = (usekyData.features || []).map((f: any) => {
+      const coords = f.geometry?.coordinates?.map(([lon, lat]: number[]) => [lat, lon]) || []
       const p = f.properties || {}
-      segments.push({id: f.id || `s${Math.random()}`, coords, isTram: !!p.TRAM, isBus: !!p.BUS, isTrol: !!p.TROL})
-    }
+      return {
+        id: f.id || `seg-${Math.random()}`,
+        coords,
+        isTram: !!p.TRAM,
+        isBus: !!p.BUS,
+        isTrol: !!p.TROL || !!p.TROLLEY
+      }
+    })
 
-    const lines: Line[] = schedJson.lines || []
+    const mappedLines: Line[] = (graphData.routes || []).map((r: any) => ({
+      ...r,
+      id: r.id || r.route_id,
+      number: r.number || r.name,
+      type: r.type === 'trol' ? 'trolley' : r.type, // sjednoceni nazvu
+      geometry: r.geometry // OSRM geometrie
+    }))
 
-    return {stops, segments, lines}
+    return {stops: mappedStops, segments: mappedSegments, lines: mappedLines, isLoading: false, error: null}
   } catch (error) {
-    console.error("Failed to load network data:", error)
-    return {stops: [], segments: [], lines: []}
+    console.error("Chyba při načítání dat:", error)
+    return {stops: [], segments: [], lines: [], isLoading: false, error: "Failed to load network data"}
   }
 }

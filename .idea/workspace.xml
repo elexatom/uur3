@@ -4,7 +4,99 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1d9a7780-39c6-42c6-9dd0-b9b1211b5d5a" name="Changes" comment="" />
+    <list default="true" id="1d9a7780-39c6-42c6-9dd0-b9b1211b5d5a" name="Changes" comment="update">
+      <change afterPath="$PROJECT_DIR$/public/data/gtfs_routes.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/data/transit_graph.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/dispatch/ReinforcementWizard.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/dispatch/ReplacementWizard.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/dispatch/ui/ConfirmBackup.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/dispatch/ui/ConfirmButton.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/dispatch/ui/ConfirmReinforcement.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/dispatch/ui/InterventionCard.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/dispatch/ui/InterventionLog.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/dispatch/ui/ReinforcementSettings.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/dispatch/ui/WizardPanel.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/layout/ui/LogOutButton.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/map/MapSettings.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/map/NetworkMap3D.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/map/helpers/BuildingLayer.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/map/helpers/MapAdjust.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/map/helpers/SegmentLayer.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/map/helpers/SelectedLineLayer.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/network/ui/Labels.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/settings/BaseMapSettings.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/simulation/SimulationPanel.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/simulation/ui/MapDisruptions.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/simulation/ui/NetworkSegmentsSim.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/simulation/ui/NetworkStopsSim.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/simulation/ui/StepEnvironment.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/simulation/ui/StepIncidents.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/services/mapUtils.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/services/useDeckLayers.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/services/useFleetCalc.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/services/useLocationSearch.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/services/useMap3D.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/services/useNetworkMap.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/store/appSlices.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/types/dispatch.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/types/mockUnits.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/types/network.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/types/simulation.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/types/slicesTypes.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.env" beforeDir="false" afterPath="$PROJECT_DIR$/.env" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DEVDOC.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/RULES.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/editor/EditorSidebar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/editor/EditorSidebar.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/editor/MapSection.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/editor/MapSection.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/editor/ui/MapElements.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/editor/ui/MapElements.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/editor/ui/VehicleSelector.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/editor/ui/VehicleSelector.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/editor/ui/WaypointList.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/editor/ui/WaypointList.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/layout/AppShell.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/layout/AppShell.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/layout/SideNav.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/layout/SideNav.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/layout/TopBar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/layout/TopBar.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/map/BasemapLayer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/map/BasemapLayer.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/map/LeafletMap.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/map/LeafletMap.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/network/Departures.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/network/NetworkTreeView.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/network/NetworkTreeView.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/network/ui/DepartureTable.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/network/ui/LayerSelector.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/network/ui/LayerSelector.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/network/ui/MapStatusOverlay.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/network/ui/MapStatusOverlay.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/network/ui/SearchBar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/network/ui/SearchBar.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/network/ui/Tree.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/network/ui/Tree.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/simulation/DisruptionControls.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/simulation/MetricsPanel.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/simulation/ScenarioSelector.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/simulation/SimulationControls.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/simulation/SimulationMap.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/simulation/SimulationMap.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/simulation/SimulationWizard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/simulation/SimulationWizard.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dev/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dev/index.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dev/palette.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dev/previews.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dev/useInitial.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/DispatchCommandPage.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/DispatchCommandPage.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/FleetStatusPage.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/LoginPage.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/LoginPage.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/NetworkMapPage.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/NetworkMapPage.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/RouteAnalyticsPage.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/RouteEditorPage.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/RouteEditorPage.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/SettingsPage.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/SettingsPage.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/SimulationPage.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/SimulationPage.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/services/dataService.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/dataService.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/services/simulationService.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/simulationService.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/store/appStore.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/appStore.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/store/fleetStore.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/store/simulationStore.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/simulationStore.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/theme.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/theme.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/types/design.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/types/design.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/types/geojson.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/types/geojson.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/types/transit.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/types/transit.ts" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -16,7 +108,7 @@
     </persistenceIdMap>
   </component>
   <component name="EmbeddingIndexingInfo">
-    <option name="cachedIndexableFilesCount" value="98" />
+    <option name="cachedIndexableFilesCount" value="120" />
     <option name="fileBasedEmbeddingIndicesEnabled" value="true" />
   </component>
   <component name="FileTemplateManagerImpl">
@@ -33,6 +125,18 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;elexatom&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/elexatom/uur3.git&quot;,
+    &quot;accountId&quot;: &quot;71c319c2-3fae-4525-b53b-a282f5764328&quot;
+  }
+}</component>
   <component name="McpProjectServerCommands">
     <commands />
     <urls />
@@ -51,12 +155,14 @@
     &quot;RunOnceActivity.MCP Project settings loaded&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
     &quot;com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
     &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
     &quot;javascript.preferred.runtime.type.id&quot;: &quot;node&quot;,
     &quot;junie.onboarding.icon.badge.shown&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/elexa/Desktop/uur3&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/elexa/Desktop/uur3/public/data&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -81,13 +187,19 @@
     </option>
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\elexa\Desktop\uur3\public\data" />
+      <recent name=" " />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\elexa\Desktop\uur3\src\components\dispatch\ui" />
+      <recent name="C:\Users\elexa\Desktop\uur3\src\components\dispatch\ " />
       <recent name="C:\Users\elexa\Desktop\uur3\src\components\network\ui" />
       <recent name="C:\Users\elexa\Desktop\uur3\src\components\network\ =" />
       <recent name="C:\Users\elexa\Desktop\uur3\src\components\network" />
     </key>
   </component>
-  <component name="RunManager" selected="npm.dev">
+  <component name="RunManager" selected="npm.build">
     <configuration name="build" type="js.build_tools.npm" nameIsGenerated="true">
       <package-json value="$PROJECT_DIR$/package.json" />
       <command value="run" />
@@ -115,8 +227,8 @@
       <method v="2" />
     </configuration>
     <list>
-      <item itemvalue="npm.dev" />
       <item itemvalue="npm.build" />
+      <item itemvalue="npm.dev" />
     </list>
   </component>
   <component name="SharedIndexes">
@@ -138,12 +250,29 @@
       <workItem from="1776872594337" duration="8828000" />
       <workItem from="1776944288229" duration="12641000" />
       <workItem from="1776957181401" duration="6824000" />
-      <workItem from="1777026056535" duration="39000" />
+      <workItem from="1777026056535" duration="187000" />
+      <workItem from="1777214474775" duration="10917000" />
+      <workItem from="1777298168337" duration="20584000" />
+      <workItem from="1777382372944" duration="28577000" />
     </task>
+    <task id="LOCAL-00001" summary="dev confg">
+      <option name="closed" value="true" />
+      <created>1777026209102</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1777026209103</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="dev confg" />
+    <MESSAGE value="update" />
+    <option name="LAST_COMMIT_MESSAGE" value="update" />
   </component>
   <component name="github-copilot-workspace">
     <instructionFileLocations>

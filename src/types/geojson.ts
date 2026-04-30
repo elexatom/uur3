@@ -25,8 +25,6 @@ export interface SignpostProperties {
   INFO: string;
 }
 
-export type TransitType = 'tram' | 'bus' | 'trolley';
-
 export interface GeoFeature<Props, Geom = GeoJSON.Geometry> {
   type: 'Feature';
   id: string;

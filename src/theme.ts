@@ -1,4 +1,4 @@
-import { createTheme } from '@mui/material/styles';
+import {createTheme} from '@mui/material/styles'
 
 const theme = createTheme({
   palette: {
@@ -21,10 +21,10 @@ const theme = createTheme({
       secondary: '#94acd3',
     },
     warning: {
-       main: '#fb8a00',
+      main: '#fb8a00',
     },
     info: {
-        main: '#8264ce',
+      main: '#8264ce',
     }
   },
   typography: {
@@ -59,25 +59,25 @@ const theme = createTheme({
       textTransform: 'uppercase',
     },
     body1: {
-        fontFamily: 'Inter, sans-serif',
+      fontFamily: 'Inter, sans-serif',
     },
     body2: {
-        fontFamily: 'Inter, sans-serif',
+      fontFamily: 'Inter, sans-serif',
     },
     caption: {
-        fontFamily: 'Inter, sans-serif',
+      fontFamily: 'Inter, sans-serif',
     },
     overline: {
-        fontFamily: 'Inter, sans-serif',
-        fontWeight: 900,
-        letterSpacing: '0.15em',
-        textTransform: 'uppercase',
+      fontFamily: 'Inter, sans-serif',
+      fontWeight: 900,
+      letterSpacing: '0.15em',
+      textTransform: 'uppercase',
     }
   },
   shape: {
-    borderRadius: 4, // "Subtle roundedness" - MUI default is 4, which is fairly subtle. DESIGN.md says "1", which might mean 4px or something else. I'll use 4.
+    borderRadius: 4,
   },
-  spacing: 8, // Normal spacing. DESIGN.md says "2", if it means 8px (2 * 4px) or something. I'll stick to default MUI spacing which is 8px.
+  spacing: 8,
   components: {
     MuiButton: {
       styleOverrides: {
@@ -94,6 +94,6 @@ const theme = createTheme({
       },
     },
   },
-});
+})
 
-export default theme;
+export default theme

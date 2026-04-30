@@ -1,9 +1,11 @@
-// revidovano OK
+/*
+Finalni revize - 100%
+ */
 
-import { useAppStore } from "../../../store/appStore.ts"
+import {useAppStore} from "../../../store/appStore.ts"
 
 export const MapStatusOverlay = () => {
-  const { network } = useAppStore()
+  const {network} = useAppStore()
 
   if (!network.isLoading && !network.error) return null
 

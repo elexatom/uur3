@@ -1,27 +1,48 @@
-import React, {useEffect} from 'react';
-import {Outlet} from 'react-router-dom';
-import {Box} from '@mui/material';
-import {SideNav} from './SideNav';
-import {TopBar} from './TopBar';
-import {useAppStore} from '../../store/appStore';
+/*
+Finalni revize - 100%
+ */
+
+import React, {useState} from 'react'
+import {Outlet} from 'react-router-dom'
+import {Box, Drawer} from '@mui/material'
+import {SideNav} from './SideNav'
+import {TopBar} from './TopBar'
 
 export const AppShell: React.FC = () => {
-  const isDarkMode = useAppStore((s) => s.isDarkMode);
+  const [mobileOpen, setMobileOpen] = useState(false)
+  const [collapsed, setCollapsed] = useState(false)
 
-  useEffect(() => {
-    document.documentElement.classList.toggle('light-mode', !isDarkMode);
-  }, [isDarkMode]);
+  const handleToggle = () => {
+    if (window.innerWidth < 1024) {
+      setMobileOpen((prev) => !prev)
+    } else {
+      setCollapsed((prev) => !prev)
+    }
+  }
 
   return (
     <Box
-      sx={{display: 'flex', height: '100vh', overflow: 'hidden', bgcolor: 'background.default', color: 'text.primary'}}>
-      <SideNav/>{/*TODO: consolidace sidebar*/}
-      <Box sx={{flex: 1, display: 'flex', flexDirection: 'column', overflow: 'hidden'}}>
-        <TopBar/> {/*TODO: konsolidace topbar*/}
-        <Box component="main" sx={{flex: 1, overflow: 'hidden', position: 'relative'}}>
+      className="flex h-screen overflow-hidden"
+      sx={{bgcolor: 'background.default', color: 'text.primary'}}>
+      <Drawer
+        className="lg:hidden block w-60"
+        open={mobileOpen}
+        onClose={handleToggle}
+      >
+        <SideNav/>
+      </Drawer>
+
+      <Box className={`hidden lg:block shrink-0 transition-all duration-300 ${collapsed ? 'w-0' : 'w-60'}`}>
+        <SideNav collapsed={collapsed}/>
+      </Box>
+
+      <Box className="flex flex-1 flex-col">
+        <TopBar onToggleNav={handleToggle}/>
+
+        <Box className="flex-1 overflow-auto">
           <Outlet/>
         </Box>
       </Box>
     </Box>
-  );
-};
+  )
+}

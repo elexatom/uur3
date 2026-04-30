@@ -1,15 +1,17 @@
-// revidovano OK
+/*
+Finalni revize - 100%
+ */
 
-import { Box, Button, TextField, Typography } from "@mui/material"
-import { DeleteSweep as DeleteSweepIcon } from "@mui/icons-material"
-import { useAppStore } from "../../store/appStore.ts"
-import { VehicleSelector } from "./ui/VehicleSelector.tsx"
-import type { TransitType } from "../../types/transit.ts"
-import { WaypointList } from "./ui/WaypointList.tsx"
+import {Box, Button, TextField, Typography} from "@mui/material"
+import {DeleteSweep as DeleteSweepIcon} from "@mui/icons-material"
+import {useAppStore} from "../../store/appStore.ts"
+import {VehicleSelector} from "./ui/VehicleSelector.tsx"
+import type {TransitType} from "../../types/transit.ts"
+import {WaypointList} from "./ui/WaypointList.tsx"
 
 export default function EditorSidebar() {
   const {
-    routeConfig, setRouteName, setRouteType, removeWaypoint,
+    routeConfig, setRouteName, setRouteType,
     clearRoute, saveRouteToNetwork
   } = useAppStore()
 
@@ -31,7 +33,7 @@ export default function EditorSidebar() {
         </Box>
 
         <VehicleSelector onSelect={(type: TransitType) => setRouteType(type)} routeType={routeConfig.type}/>
-        <WaypointList routeConfig={routeConfig} removeWaypoint={removeWaypoint}/>
+        <WaypointList/>
       </Box>
 
       <Box className="p-6 border-t border-slate-100 bg-slate-50 flex gap-3">
@@ -42,7 +44,7 @@ export default function EditorSidebar() {
           startIcon={<DeleteSweepIcon/>}
           color="error" size="small"
           className="rounded-xl border-slate-200 text-slate-600 font-black text-xs"
-          style={{ textTransform: "none" as const }}
+          style={{textTransform: "none" as const}}
         >
           Reset
         </Button>
@@ -54,7 +56,7 @@ export default function EditorSidebar() {
           disabled={!routeConfig.name || routeConfig.waypoints.length < 2}
           color="primary" size="small"
           className="rounded-xl font-semibold text-xs"
-          style={{ textTransform: "none" as const }}
+          style={{textTransform: "none" as const}}
         >
           <span className="text-white">Uložit</span>
         </Button>

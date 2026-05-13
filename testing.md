@@ -1,7 +1,7 @@
 # Testovací scénáře Správa MHD Plze
 Tato aplikace slouží k řízení a plánování veřejné dopravy v Plzni.
 
-**URL:** `http://192.168.127.12:8080/`
+**URL:** `https://uur.tekstar.cz/`
 
 **Výchozí heslo:** `uur2026`
 

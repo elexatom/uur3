@@ -20,7 +20,6 @@ interface SimulationState {
     congestion: number;
     efficiency: number;
     delay: number;
-    activeFleet: number;
   };
   setMetrics: (m: Partial<SimulationState['metrics']>) => void;
 
@@ -50,7 +49,6 @@ export const useSimulationStore = create<SimulationState>((set) => ({
     congestion: 40,
     efficiency: 100,
     delay: 0,
-    activeFleet: 400,
   },
   setMetrics: (m) => set((state) => ({metrics: {...state.metrics, ...m}})),
 

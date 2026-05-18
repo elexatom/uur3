@@ -1,3 +1,6 @@
+/**
+ * Revidovano ok
+ */
 import {useAppStore} from "../store/appStore.ts"
 import {useMemo} from "react"
 
